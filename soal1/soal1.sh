@@ -1,6 +1,5 @@
 #a
 cut -d":" -f 4 syslog.log
-list=($(cut -d ":" -f 4 syslog.log))
 
 #b
 grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8 | sort | uniq -c | sort -nr 
@@ -13,3 +12,6 @@ grep INFO syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -
 
 #d
 echo "Error,Count" > error_emssage.csv
+
+#e
+echo "Username,INFO,ERROR" > user_statistic.csv
