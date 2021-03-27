@@ -23,7 +23,22 @@ c. Segment customer dan jumlah transaksinya yang paling sedikit.
 
 d. Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sedikit dan total keuntungan wilayah tersebut.
 
-**Penyelesaian**
+**_Pembahasan:_**
+  - Nomor 2a
+  ```
+  awk -F '\t' '
+  {	
+	    if (NR>1) profitPercentage[$1] = $21 / ($18 - $21) * 100
+	
+	    for (ID in profitPercentage){
+		      if(max <= profitPercentage[ID] ){
+			        max = profitPercentage[ID]
+			        rowID = ID
+		      }	
+	    }	
+  } END {print "Transaksi terakhir dengan percentage profit terbesar yaitu", rowID,"dengan persentase", max,"%\n"}' Laporan-TokoShiSop.tsv > hasil.txt
+  ```
+    - `awk -F 't' `
 
 
 ## SOAL 3 
