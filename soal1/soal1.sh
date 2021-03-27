@@ -10,3 +10,6 @@ echo "ini ERROR"
 grep ERROR syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -c 
 echo "ini INFO"
 grep INFO syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -c
+
+#d
+echo "Error,Count" > error_emssage.csv
