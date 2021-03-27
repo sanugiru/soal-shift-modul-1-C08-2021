@@ -5,7 +5,61 @@ Anggota:
 - 05111940000158 Shahnaaz Anisa Firdaus 	
 
 ## SOAL 1 
+(a) Mengumpulkan informasi dari log aplikasi yang terdapat pada file syslog.log. Informasi yang diperlukan antara lain: jenis log (ERROR/INFO), pesan log, dan username pada setiap baris lognya
+(b) Kemudian, Ryujin harus menampilkan semua pesan error yang muncul beserta jumlah kemunculannya.
+(c) Ryujin juga harus dapat menampilkan jumlah kemunculan log ERROR dan INFO untuk setiap user-nya.
+(d) Semua informasi yang didapatkan pada poin b dituliskan ke dalam file error_message.csv dengan header Error,Count yang kemudian diikuti oleh daftar pesan error dan jumlah kemunculannya diurutkan berdasarkan jumlah kemunculan pesan error dari yang terbanyak.
+(e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_statistic.csv dengan header Username,INFO,ERROR diurutkan berdasarkan username secara ascending.
 
+**_Pembahasan_**
+-Nomor 1a
+```
+cut -d":" -f 4 syslog.log
+```
+fungsi cut bertujuan untuk memotong string yang awalnya berbentuk :
+<time> <hostname> <app_name>: <log_type> <log_message> (<username>)
+menjadi :
+<log_type> <log_message> (<username>)
+agar cut dapat berjalan dengan benar maka digunakanlah delimiter (-d) dan field (-f), dikarenakan adanya tanda ":" sebelum <log_type> maka delimiter di set ":" dan karenakan log_type merupakan field ke-4 maka digunakan -f 4
+
+-Nomor 1b
+```
+grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8 | sort | uniq -c | sort -nr 
+```
+`grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
+`cut -d":" -f4` bertujuan untuk menghilangkan pola string di belakang <log_type>
+`cut -d"(" -f1` bertujuan untuk menghilangkan pola (<username>) pada string
+`cut -d" " -f3-8` bertujuan untuk menghilangkan kata ERROR dan hanya menyisakan <log_message>
+setelah hanya menyisakan <log_message>, hasil yang didapat di sort dan dihitung berdasarkan kesamaan <log_message> menggunakan `uniq -c` dan di sort secara descending berdasarkan jumlah kemunculannya dengan `sort -nr`
+
+-Nomor 1c
+```
+echo "ini ERROR"
+grep ERROR syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -c 
+echo "ini INFO"
+grep INFO syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -c
+```
+`grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
+`rev` digunakan untuk mereverse string
+`cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
+setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
+
+`grep INFO` bertujuan untuk mendapatkan log_type hanya INFO dalam syslog.
+`rev` digunakan untuk mereverse string
+`cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
+setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
+
+-Nomor 1d
+```
+echo "Error,Count" > error_message.csv
+```
+membuat header file untuk erro_message.csv
+
+-Nomor 1e
+```
+echo "Username,INFO,ERROR"
+```
+membuat header file untuk user_statistic.csv
 
 ## SOAL 2
 Tiap tahunnya, TokoShiSop mengadakan Rapat Kerja yang membahas bagaimana hasil penjualan dan strategi kedepannya yang akan diterapkan. Kamu sudah sangat menyiapkan sangat matang untuk raker tahun ini. Tetapi tiba-tiba, Steven, Manis, dan Clemong meminta kamu untuk mencari beberapa kesimpulan dari data penjualan “Laporan-TokoShiSop.tsv”.
