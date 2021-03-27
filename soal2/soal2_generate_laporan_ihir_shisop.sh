@@ -18,7 +18,13 @@ awk -F '\t' '
 #Nomor-2b
 echo "Daftar nama customer di Albuquerque pada tahun 2017 antara lain:" >> hasil.txt
 
-awk -F '\t' '$10 ~ /Albuquerque/ && $2 ~ /2017/ {print $7}' Laporan-TokoShiSop.tsv >> hasil.txt
+awk -F '\t' '{
+	if ($2 ~ /2017/ && $10 ~ /Albuquerque/){
+		custName[$7]++
+	}
+
+} END { for (i in custName) print i}' Laporan-TokoShiSop.tsv >> hasil.txt
+
 
 
 #Nomor-2c
