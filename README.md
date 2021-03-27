@@ -15,6 +15,7 @@ a. Row ID dan profit percentage terbesar (jika hasil profit percentage terbesar 
   Profit Percentage = (Profit ÷Cost Price) ×100
   ```
   Cost Price didapatkan dari pengurangan Sales dengan Profit (Quantity diabaikan).
+
 b. Daftar nama customer pada transaksi tahun 2017 di Albuquerque.
 
 c. Segment customer dan jumlah transaksinya yang paling sedikit.
