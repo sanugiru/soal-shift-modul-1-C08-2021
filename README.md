@@ -77,6 +77,7 @@ d. Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sediki
   - `for (seg in segCust)` looping untuk membandingkan jumlah transaksi
   - apabila nilai dari suatu segment lebih kecil dari variabel 'min', nilai dari array key segment tersebut akan disimpan ke dalam variable 'min' dan array key-nya akan disimpan ke dalam variabel 'segment.'
   - `seg!="Segment"` kondisi tambahan agar line pertama yang merupakan header, tidak terhitung dalam perbandingan.
+  -   - Hasil output ditambahkan ke dalam file hasil.txt yang telah dibuat pada nomor sebelumnya.
 
 - Nomor 2d
   ```
@@ -94,6 +95,10 @@ d. Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sediki
 	}
   } END {print "\nWilayah bagian (region) yang memiliki keuntungan (profit) paling sedikit adalah", region,"dengan total keuntungan",min}' Laporan-TokoShiSop.tsv >> hasil.txt
   ```
-  - `min = profit[$13]`
+  - `min = profit[$13]` inisialisasi variabel min untuk nantinya dijadikan perbandingan untuk mencari region yang memiliki profit paling sedikit.
+  - `profit[$13] += $21` array profit dengan key kolom ke-13 (Region) menambahkan nilai dari kolom ke-21 (profit) untuk setiap baris dengan region yang sama.
+  - Kemudian array di-loop untuk mencari region yang memiliki nilai profit terdikit, apabila nilai array lebih kecil dari variabel 'min' maka nilai dari array key region tersebut akan disimpan ke dalam variabel 'min' dan array key-nya akan disimpan ke dalam variabel 'region'
+  - `reg!="Region"` kondisi tambahan agar line pertama yang merupakan header, tidak terhitung dalam perbandingan.
+  - Hasil output ditambahkan ke dalam file hasil.txt yang telah dibuat pada nomor sebelumnya.
 
 ## SOAL 3 
