@@ -24,7 +24,7 @@ c. Segment customer dan jumlah transaksinya yang paling sedikit.
 d. Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sedikit dan total keuntungan wilayah tersebut.
 
 **_Pembahasan:_**
-  - Nomor 2a
+- Nomor 2a
   ```
   awk -F '\t' '
   {	
@@ -38,7 +38,8 @@ d. Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sediki
 	    }	
   } END {print "Transaksi terakhir dengan percentage profit terbesar yaitu", rowID,"dengan persentase", max,"%\n"}' Laporan-TokoShiSop.tsv > hasil.txt
   ```
-    - `awk -F 't' `
-
+   - ` awk -F '\t'`  menandakan penggunaan awk serta field separator yang digunakan yaitu tab.
+   - `if (NR>1) profitPercentage[$1] = $21 / ($18 - $21) * 100`  conditional-if supaya line pertama dari record yaitu headernya tidak ikut terproses dalam perhitungan. Array profitPercentage dengan key Row ID menyimpan hasil perhitungan dari rumus yang sudah diberikan soal untuk tiap baris record.
+   - Kemudian array profitPercentage di looping sebanyak jumlah record yang ada untuk mencari profit percentage terbesar dengan cara membandingkan tiap baris data dengan variable max yang awalnya bernilai nol, data yang memenuhi syarat profit percentage dan row id-nya akan di simpan ke dalam variabel max dan rowID.
 
 ## SOAL 3 
