@@ -12,7 +12,7 @@ awk -F '\t' '
 			rowID = ID
 		}	
 	}	
-} END {print "Transaksi terakhir dengan percentage profit terbesar yaitu", rowID,"dengan persentase", max,"%\n"}' Laporan-TokoShiSop.tsv > hasil.txt
+} END {print "Transaksi terakhir dengan profit percentage terbesar yaitu", rowID,"dengan persentase", max,"%\n"}' Laporan-TokoShiSop.tsv > hasil.txt
 
 
 #Nomor-2b
