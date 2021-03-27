@@ -11,7 +11,7 @@ echo "ini INFO"
 grep INFO syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -c
 
 #d
-echo "Error,Count" > error_emssage.csv
+echo "Error,Count" > error_message.csv
 
 #e
 echo "Username,INFO,ERROR" > user_statistic.csv
