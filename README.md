@@ -24,6 +24,6 @@ c. Segment customer dan jumlah transaksinya yang paling sedikit.
 d. Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sedikit dan total keuntungan wilayah tersebut.
 
 **Penyelesaian**
-----------------
+
 
 ## SOAL 3 
