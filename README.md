@@ -180,7 +180,7 @@ e) Karena kuuhaku hanya bertemu Steven pada saat kuliah saja, yaitu setiap hari 
 ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya ter-unzip dan tidak ada file zip sama sekali.
 
 **_Pembahasan_**
-- Nomor 3a
+**NOMOR 3A**
 ```
 # !/bin/bash
 
@@ -220,7 +220,7 @@ do
 	wget "https://loremflickr.com/320/240/kitten"
 done
 ```
-- WERWERWEWERWE
+-  `shopt -s globstar` diperlukan untuk pencarian di direktori. Kemudian dibutuhkan sebuah array untuk menyimpan file dan melakukikan pencarian sekaligus penghapusan file file yang sama berdasarkan konten. Oleh karena itu digunakan md5sum untuk memastikan bahwa file yang didownload sama persis dengan di server. Sehingga dapat memfilter file berdasarkan kontennya.
 ```
 declare -A arr
 shopt -s globstar
@@ -243,7 +243,7 @@ for X in kitten*; do
 done
 ```
 
-- Nomor 3b
+**NOMOR 3B**
 SHELL SCRIPT
 ```
 #!/bin/bash
@@ -262,7 +262,7 @@ PENJELASAN SOAL 3B
 - `0 20 */7 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh` menjalankan shell script soal3a.sh setiap jam 20:00 pada tujuh hari sekali setiap bulan
 - `0 20 */4 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh` menjalankan shell script soal3a.sh setiap jam 20:00 pada empat hari sekali setiap bulan
 
-- Nomor 3c
+**NOMOR 3C**
 ```
 #!/bin/bash
 
@@ -331,7 +331,7 @@ PENJELASAN SOAL 3C
 - `exec &> Foto.log` untuk menyimpan log ke Foto.log
 - Pada proses 3.2 melakukan proses download file, rename file dan memindahkan semua hasil download di direktori output ke folder sesuai ketentuan soal. Untuk 3.2.1 bertugas pada file kitten dan 3.2.2 untuk file bunny
 
-- Nomor 3d
+**NOMOR 3D**
 ```
 #!/bin/bash
 
@@ -346,7 +346,7 @@ PENJELASAN SOAL 3D
 - `find . -type d -name 'Kucing*' -exec rm -r {} +` karena di soal diminta untuk tidak meninggalkan folder apapun kecuali zip maka semua folder yang ada nama Kucingnya dihapus
 - `find . -type d -name 'Kelinci*' -exec rm -r {} +` begitu juga dengan folder yang ada namanya Kelinci
 
-- Nomor 3e
+**NOMOR 3E**
 ```
 * 7-16 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh
 * * * * 6-7 unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip
