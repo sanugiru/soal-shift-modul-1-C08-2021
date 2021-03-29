@@ -211,15 +211,30 @@ for X in kitten*; do
   flag=$(($flag+1));
 done
 ```
-PENJELASAN
+PENJELASAN 3A
 - `exec &> Foto.log` digunakan untuk mengeksekusi log
+- Digunakan untuk mendownload gambar dari 1 sampai 23
 ```
 for i in {1..23}
 do
 	wget "https://loremflickr.com/320/240/kitten"
 done
 ```
-- Digunakan untuk mendownload gambar dari 1 sampai 3
+- WERWERWEWERWE
+```
+declare -A arr
+shopt -s globstar
+
+for file in **; do
+  [[ -f "$file" ]] || continue
+   
+  read cksm _ < <(md5sum "$file")
+  if ((arr[$cksm]++)); then 
+    rm "$file"
+  fi
+done
+```
+- Untuk merename file keformat soal pertama di deklarasikan nilai `flag=1` yang merupakan file pertama hasil rename. kemudian dilakukan looping untuk setiap nama filenya terdapat kata kitten. `mv "$X" "Koleksi_$flag"` dengan perintah ini maka setiap nama file yang ada kata kitten diganti dengan Koleksi_1 dst. Angka 1 menyesuaikan nilai flagnya.
 ```
 flag=1
 for X in kitten*; do
@@ -227,7 +242,115 @@ for X in kitten*; do
   flag=$(($flag+1));
 done
 ```
+
 - Nomor 3b
+SHELL SCRIPT
+```
+#!/bin/bash
+
+mkdir ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)
+mv  ~/Documents/SISOP/modul1/soal3/hasil3a/* ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)
+```
+CRONTAB
+```
+0 20 */7 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh
+0 20 */4 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh
+```
+PENJELASAN SOAL 3B
+- `mkdir ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)` membuat folder dengan nama sesuai tanggal di hari tersebut. Untuk direktori menyesuaikan
+- `mv  ~/Documents/SISOP/modul1/soal3/hasil3a/* ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)` dengan ini maka semua file yang ada di direktori hasil3a (direktori menyesuaikan) dipindah ke direktori yang sebelumnya dibuat
+- `0 20 */7 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh` menjalankan shell script soal3a.sh setiap jam 20:00 pada tujuh hari sekali setiap bulan
+- `0 20 */4 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh` menjalankan shell script soal3a.sh setiap jam 20:00 pada empat hari sekali setiap bulan
+
 - Nomor 3c
+```
+#!/bin/bash
+
+cd /home/deka/Documents/SISOP/modul1/soal3/output
+
+#PROSES 3.1
+#PROSES 3.1.1
+flag_kucing=0
+for i in x*;
+do
+	flag_kucing=$(($flag_kucing+1));
+done
+
+#PROSES 3.1.2
+flag_kelinci=0
+for i in y*;
+do
+	flag_kelinci=$(($flag_kelinci+1));
+done
+#PROSES 3.1 END
+
+# echo $flag_kucing
+# echo $flag_kelinci
+
+#PROSES 3.2
+exec &> Foto.log
+if [[ $flag_kucing -le $flag_kelinci ]];
+then
+	#PROSES 3.2.1
+	flag=1
+	for i in {1..23}
+	do
+		wget "https://loremflickr.com/320/240/kitten"
+	done
+
+	for X in kitten* 
+	do
+		mv "$X" "Koleksi_$flag";
+  		flag=$(($flag+1));
+  	done
+  	mkdir ~/Documents/SISOP/modul1/soal3/solve/Kucing_$(date +%d-%m-%Y)
+	mv ~/Documents/SISOP/modul1/soal3/output/* ~/Documents/SISOP/modul1/soal3/solve/Kucing_$(date +%d-%m-%Y)
+	touch ~/Documents/SISOP/modul1/soal3/output/x_"$flag_kucing"{1..2}.txt
+
+else
+	#PROSES 3.2.2
+	flag=1
+	for i in {1..23}
+	do
+		wget "https://loremflickr.com/320/240/bunny"
+	done
+	
+	for X in bunny* 
+	do
+  		mv "$X" "Koleksi_$flag";
+  		flag=$(($flag+1));
+  	done
+  	mkdir ~/Documents/SISOP/modul1/soal3/solve/Kelinci_$(date +%d-%m-%Y)
+	mv ~/Documents/SISOP/modul1/soal3/output/* ~/Documents/SISOP/modul1/soal3/solve/Kelinci_$(date +%d-%m-%Y)
+	touch ~/Documents/SISOP/modul1/soal3/output/y_"$flag_kelinci"{1..2}.txt
+fi
+```
+PENJELASAN SOAL 3C
+- Pada proses 3.1.1 digunakan untuk menghitung jumlah file yang terdapat kata x `flag_kucing=$(($flag_kucing+1))` dimana file x dibuat ketika terdapat di direktori `/Documents/SISOP/modul1/soal3/output/` setelah pemindahan semua file output ke direktori `/Documents/SISOP/modul1/soal3/solve/Kucing_$(date +%d-%m-%Y)`.
+- Pada proses 3.1.2 digunakan untuk menghitung jumlah file yang terdapat kata y `flag_kelinci=$(($flag_kelinci+1))` dimana file x dibuat ketika terdapat di direktori `/Documents/SISOP/modul1/soal3/output/` setelah pemindahan semua file output ke direktori `/Documents/SISOP/modul1/soal3/solve/Kelinci_$(date +%d-%m-%Y)`.
+- `exec &> Foto.log` untuk menyimpan log ke Foto.log
+- Pada proses 3.2 melakukan proses download file, rename file dan memindahkan semua hasil download di direktori output ke folder sesuai ketentuan soal. Untuk 3.2.1 bertugas pada file kitten dan 3.2.2 untuk file bunny
+
 - Nomor 3d
+```
+#!/bin/bash
+
+cd /home/deka/Documents/SISOP/modul1/soal3/solve
+zip -P $(date +%m%d%Y) -r Koleksi.zip  *
+find . -type d -name 'Kucing*' -exec rm -r {} +
+find . -type d -name 'Kelinci*' -exec rm -r {} +
+```
+PENJELASAN SOAL 3D
+- `cd /home/deka/Documents/SISOP/modul1/soal3/solve` pindah ke direktori solve tempat dimana folder `Kucing_$(date +%d-%m-%Y)` dan `Kelinci_$(date +%d-%m-%Y)` berada.
+- `zip -P $(date +%m%d%Y) -r Koleksi.zip  *` zip semua folder yang ada di direktori solve tersebut dengan nama Koleksi.zip
+- `find . -type d -name 'Kucing*' -exec rm -r {} +` karena di soal diminta untuk tidak meninggalkan folder apapun kecuali zip maka semua folder yang ada nama Kucingnya dihapus
+- `find . -type d -name 'Kelinci*' -exec rm -r {} +` begitu juga dengan folder yang ada namanya Kelinci
+
 - Nomor 3e
+```
+* 7-16 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh
+* * * * 6-7 unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip
+```
+PENJELASAN NOMOR 3E
+- `* 7-16 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh` menjalankan program soal3d.sh setiap jam 07:00 - 16:00 setiap hari Senin-Jumat
+- `* * * * 6-7 unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip` melakukan unzip file yang terdapat di direktori solve dengan ketentuan password `$(date -d "yesterday" '+%m%d%Y')` dimana hari yang dipakai adalah Jumat. Mengapa hari Jumat? karena setiap aktivitas zip file terakhir kali dilakukan di hari Jumat dan unzip file dilakukan paling awal hari Sabtu. Maka hanya perlu unzip file tersebut setiap hari Sabtu dengan Password tanggal hari Jumat.
