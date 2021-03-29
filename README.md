@@ -244,14 +244,15 @@ done
 ```
 
 **NOMOR 3B**
-SHELL SCRIPT
+
+- SHELL SCRIPT
 ```
 #!/bin/bash
 
 mkdir ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)
 mv  ~/Documents/SISOP/modul1/soal3/hasil3a/* ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)
 ```
-CRONTAB
+- CRONTAB
 ```
 0 20 */7 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh
 0 20 */4 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh
