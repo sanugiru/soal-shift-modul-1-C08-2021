@@ -351,6 +351,7 @@ PENJELASAN NOMOR 3E
 - `* 7-16 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh` menjalankan program soal3d.sh setiap jam 07:00 - 16:00 setiap hari Senin-Jumat
 - `* * * * 6-7 unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip` melakukan unzip file yang terdapat di direktori solve dengan ketentuan password `$(date -d "yesterday" '+%m%d%Y')` dimana hari yang dipakai adalah Jumat. Mengapa hari Jumat? karena setiap aktivitas zip file terakhir kali dilakukan di hari Jumat dan unzip file dilakukan paling awal hari Sabtu. Maka hanya perlu unzip file tersebut setiap hari Sabtu dengan Password tanggal hari Jumat.
 
-KENDALA
+**KENDALA**
+NOMOR 3
 1. di nomor 3C saya tidak tau cara looping melewati folder, sehingga harus mengakali membuat file lain untuk menjembatani. 
 2. saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
