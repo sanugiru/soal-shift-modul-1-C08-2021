@@ -1,2 +1,2 @@
 0 7 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh
-0 18 * * * * unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip
+0 18 * * * * unzip -P "$(date '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip
