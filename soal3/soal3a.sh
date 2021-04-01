@@ -1,10 +1,6 @@
 # !/bin/bash
 
 #dijalankan di dir hasil3a
-
-# !/bin/bash
-
-#dijalankan di dir hasil3a
 len=22
 i=0
 while [ "$i" -le "$len" ]
