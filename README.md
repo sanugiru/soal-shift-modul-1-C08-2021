@@ -205,25 +205,38 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
 # !/bin/bash
 
 #dijalankan di dir hasil3a
-
-exec &> Foto.log
-for i in {1..23}
+len=22
+i=0
+while [ "$i" -le "$len" ]
 do
-	wget "https://loremflickr.com/320/240/kitten"
+	if [[ $i -eq 0 ]]; then
+		wget -O "kitten" -a Foto.log https://loremflickr.com/320/240/kitten
+	else
+		wget -O "kitten.$i" -a Foto.log https://loremflickr.com/320/240/kitten
+	fi
+	
+	flag=0
+    check=($(awk '/https:\/\/loremflickr.com\/cache\/resized\// {print $3}' ./Foto.log))
+    length=(${#check[@]})
+    for((j=0; j < ($length-1); j++))
+    do
+        if [ "${check[j]}" == "${check[$(($length-1))]}" ]
+        then
+            flag=1
+            break
+        fi
+    done
+    if [ $flag -eq 1 ]
+    then
+        len=$(($len - 1))
+        if [[ $i -eq 0 ]]; then
+        	rm "kitten"
+        fi
+        rm "kitten.$i"
+    else
+        i=$(($i + 1)) 
+    fi
 done
-
-declare -A arr
-shopt -s globstar
-
-for file in **; do
-  [[ -f "$file" ]] || continue
-   
-  read cksm _ < <(md5sum "$file")
-  if ((arr[$cksm]++)); then 
-    rm "$file"
-  fi
-done
-
 
 flag=1
 for X in kitten*; do
@@ -232,27 +245,41 @@ for X in kitten*; do
 done
 ```
 PENJELASAN 3A
-- `exec &> Foto.log` digunakan untuk mengeksekusi log
-- Digunakan untuk mendownload gambar dari 1 sampai 23
+- pertama perlu mendownload file dengan format kitten dan menyimpan lognya di Foto.log.
 ```
-for i in {1..23}
-do
-	wget "https://loremflickr.com/320/240/kitten"
-done
+if [[ $i -eq 0 ]]; then
+	wget -O "kitten" -a Foto.log https://loremflickr.com/320/240/kitten
+else
+	wget -O "kitten.$i" -a Foto.log https://loremflickr.com/320/240/kitten
+fi
+	
 ```
--  `shopt -s globstar` diperlukan untuk pencarian di direktori. Kemudian dibutuhkan sebuah array untuk menyimpan file dan melakukikan pencarian sekaligus penghapusan file file yang sama berdasarkan konten. Oleh karena itu digunakan md5sum untuk memastikan bahwa file yang didownload sama persis dengan di server. Sehingga dapat memfilter file berdasarkan kontennya.
+- Kemudian mengecek apakah file sama berdasarkan riwayat log tersebut dan menandai dengan flag = 1 apabila terdapat file yang sam
 ```
-declare -A arr
-shopt -s globstar
+flag=0
+check=($(awk '/https:\/\/loremflickr.com\/cache\/resized\// {print $3}' ./Foto.log))
+length=(${#check[@]})
 
-for file in **; do
-  [[ -f "$file" ]] || continue
-   
-  read cksm _ < <(md5sum "$file")
-  if ((arr[$cksm]++)); then 
-    rm "$file"
-  fi
+for((j=0; j < ($length-1); j++)) do
+        if [ "${check[j]}" == "${check[$(($length-1))]}" ]
+        then
+            flag=1
+            break
+	fi
 done
+```
+- hapus file ketika diketahui ada file yang sama
+```
+if [ $flag -eq 1 ]
+    then
+        len=$(($len - 1))
+        if [[ $i -eq 0 ]]; then
+        	rm "kitten"
+        fi
+        rm "kitten.$i"
+else
+        i=$(($i + 1)) 
+fi
 ```
 - Untuk merename file keformat soal pertama di deklarasikan nilai `flag=1` yang merupakan file pertama hasil rename. kemudian dilakukan looping untuk setiap nama filenya terdapat kata kitten. `mv "$X" "Koleksi_$flag"` dengan perintah ini maka setiap nama file yang ada kata kitten diganti dengan Koleksi_1 dst. Angka 1 menyesuaikan nilai flagnya.
 ```
@@ -274,8 +301,7 @@ mv  ~/Documents/SISOP/modul1/soal3/hasil3a/* ~/Documents/SISOP/modul1/soal3/$(da
 ```
 - CRONTAB
 ```
-0 20 */7 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh
-0 20 */4 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh
+0 20 1-30/7,2-30/4 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh
 ```
 PENJELASAN SOAL 3B
 - `mkdir ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)` membuat folder dengan nama sesuai tanggal di hari tersebut. Untuk direktori menyesuaikan
@@ -369,15 +395,35 @@ PENJELASAN SOAL 3D
 
 **NOMOR 3E**
 ```
-* 7-16 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh
-* * * * 6-7 unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip
+0 7 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh
+0 18 * * * unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip
 ```
 PENJELASAN NOMOR 3E
-- `* 7-16 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh` menjalankan program soal3d.sh setiap jam 07:00 - 16:00 setiap hari Senin-Jumat
-- `* * * * 6-7 unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip` melakukan unzip file yang terdapat di direktori solve dengan ketentuan password `$(date -d "yesterday" '+%m%d%Y')` dimana hari yang dipakai adalah Jumat. Mengapa hari Jumat? karena setiap aktivitas zip file terakhir kali dilakukan di hari Jumat dan unzip file dilakukan paling awal hari Sabtu. Maka hanya perlu unzip file tersebut setiap hari Sabtu dengan Password tanggal hari Jumat.
+- `0 7 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh` menjalankan program soal3d.sh sekali mulai jam 07:00 - 16:00 setiap hari Senin-Jumat
+- `0 18 * * * unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip` melakukan unzip file yang terdapat di direktori solve dengan ketentuan password `$(date -d '+%m%d%Y')`. unzip dilakukan mulai pukul 18.00 karena pada jam tersebut perkuliahan berakhir
 
 **KENDALA**
 
 NOMOR 3
 1. di nomor 3C saya tidak tau cara looping melewati folder, sehingga harus mengakali membuat file lain untuk menjembatani. 
 2. saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
+
+**SCREENSHOT**
+
+HASIL 3A
+![Screenshot from 2021-04-02 22-42-55](https://user-images.githubusercontent.com/55046884/113430709-cd4ba980-9404-11eb-9ea6-0d83b752841a.png)
+
+HASIL 3B
+Digambar diketahui kalau semua koleksi gambar di pindah ke folder waktu folder tersebut dibuat yakni 02-04-2021
+![Screenshot from 2021-04-02 22-45-13](https://user-images.githubusercontent.com/55046884/113430882-20256100-9405-11eb-83f1-be398a50c555.png)
+
+HASIL 3C
+![Screenshot from 2021-04-02 22-51-55](https://user-images.githubusercontent.com/55046884/113431510-0df7f280-9406-11eb-8af3-e00ff58726c5.png)
+
+HASIL 3D
+Semua folder hasil dari 3C dijadikan satu file zip dengan nama Koleksi.zip dan password sesuai tanggal pembuatan zip tersebut
+![Screenshot from 2021-04-02 22-52-34](https://user-images.githubusercontent.com/55046884/113431576-2405b300-9406-11eb-8439-7b6e10db616b.png)
+
+HASIL 3E
+Hasil berupa unzip file dengan password yang sama dengan pembuatan zip tersebut
+![Screenshot from 2021-04-02 22-56-35](https://user-images.githubusercontent.com/55046884/113431947-bad26f80-9406-11eb-82f8-23b9c7cbcc75.png)
