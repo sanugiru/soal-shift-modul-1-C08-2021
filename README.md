@@ -58,12 +58,37 @@ setelah hanya menyisakan <username> makan username akan di sort dan dihitung ber
 echo "Error,Count" > error_message.csv
 ```
 membuat header file untuk erro_message.csv
+```
+jenis=`grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8 | sort | uniq`
+reg=`grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8`
 
+while read x
+do
+	counter=`echo "$reg"|sort | grep -c "$x"`
+	hasil=`printf "$hasil\n$x,$counter"`
+done<<<`printf "$jenis"`
+hasil=`echo "$hasil" | sort -rnk2t',' `
+printf "$hasil" >> error_message.csv
+```
+Variabel jenis adalah variabel yang menyimpan jenis error non repitisi, dan variabel reg adalah variabel yang menyimpan jenis error dengan repitisi. Untuk menghilangkan repetisi jenis error maka digunakan  `uniq` pada variabel jenis, selanjutnya kemunculan setiap jenis error akan dihitung di dalam variable counter, lalu variabel hasil digunakan untuk menyimpan `jenis error, jumlah kemunculannya`. lalu hasil akan disort berdasarkan kolom 2 yaitu jumlah kemunculan jenis error dengan urutan dari besar ke kecil.
 -Nomor 1e
 ```
 echo "Username,INFO,ERROR"
 ```
 membuat header file untuk user_statistic.csv
+```
+nama=`cut -d":" -f 4 syslog.log | rev | cut -d"(" -f1 | rev | cut -d")" -f1| sort | uniq`
+reg=`cut -d":" -f 4 syslog.log | rev | cut -d"(" -f1| rev | cut -d ")" -f1|sort`
+while read y
+do
+	error=`cut -d":" -f4 syslog.log | grep "$y" | grep -c "ERROR"`
+	info=`cut -d":" -f4 syslog.log | grep "$y" | grep -c "INFO"`
+	stat=`printf "$y,$info,$error\n"`
+	hasilstat=`printf "$hasilstat\n$stat"`
+done <<< `printf "$nama"`
+printf "$hasilstat" >> user_statistic.csv
+```
+variabel nama adalah variabel yang menyimpan setiap username non repetisi. Variabel error digunakan untuk menghitung jumlah error untuk setiap usernya, variabel info digunakan untuk menghitung jumlah  info untuk setiap usernya, lalu stat akan menunjukkan jumlah info dan error untuk setiap usernya dan akan dimasukkan ke dalam hasilstat dan dikirim ke user_statistic.csv
 
 ## SOAL 2
 Tiap tahunnya, TokoShiSop mengadakan Rapat Kerja yang membahas bagaimana hasil penjualan dan strategi kedepannya yang akan diterapkan. Kamu sudah sangat menyiapkan sangat matang untuk raker tahun ini. Tetapi tiba-tiba, Steven, Manis, dan Clemong meminta kamu untuk mencari beberapa kesimpulan dari data penjualan “Laporan-TokoShiSop.tsv”.
