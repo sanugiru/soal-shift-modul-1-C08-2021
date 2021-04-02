@@ -419,6 +419,7 @@ Digambar diketahui kalau semua koleksi gambar di pindah ke folder waktu folder t
 ![Screenshot from 2021-04-02 22-45-13](https://user-images.githubusercontent.com/55046884/113430882-20256100-9405-11eb-83f1-be398a50c555.png)
 
 HASIL 3C
+Hasil berupa folder kucing atau kelinci yang didownload bergantian
 ![Screenshot from 2021-04-02 22-51-55](https://user-images.githubusercontent.com/55046884/113431510-0df7f280-9406-11eb-8af3-e00ff58726c5.png)
 
 HASIL 3D
