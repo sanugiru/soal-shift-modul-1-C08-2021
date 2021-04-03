@@ -402,7 +402,7 @@ PENJELASAN NOMOR 3E
 - `0 7 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh` menjalankan program soal3d.sh sekali mulai jam 07:00 - 16:00 setiap hari Senin-Jumat
 - `0 18 * * * unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip` melakukan unzip file yang terdapat di direktori solve dengan ketentuan password `$(date -d '+%m%d%Y')`. unzip dilakukan mulai pukul 18.00 karena pada jam tersebut perkuliahan berakhir
 
-**KENDALA**
+## KENDALA
 
 NOMOR 3
 1. di nomor 3C saya tidak tau cara looping melewati folder, sehingga harus mengakali membuat file lain untuk menjembatani. 
