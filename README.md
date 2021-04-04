@@ -410,7 +410,8 @@ NOMOR 3
 
 ## SCREENSHOT OUTPUT
 HASIL 2 
-![
+Output berupa file `hasil.txt` yang berisi laporan hasil dari nomor 2a, 2b, 2c, dan 2d
+![hasil2](https://user-images.githubusercontent.com/72660860/113497550-71317400-952f-11eb-9370-8251b58be5c3.png)
 
 HASIL 3A
 ![Screenshot from 2021-04-02 22-42-55](https://user-images.githubusercontent.com/55046884/113430709-cd4ba980-9404-11eb-9ea6-0d83b752841a.png)
