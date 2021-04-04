@@ -16,48 +16,48 @@ d) Semua informasi yang didapatkan pada poin b dituliskan ke dalam file error_me
 e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_statistic.csv dengan header Username,INFO,ERROR diurutkan berdasarkan username secara ascending.
 
 **_Pembahasan_**
--Nomor 1a
+- Nomor 1a
 ```
 cut -d":" -f 4 syslog.log
 ```
-fungsi cut bertujuan untuk memotong string yang awalnya berbentuk :
-<time> <hostname> <app_name>: <log_type> <log_message> (<username>)
-menjadi :
-<log_type> <log_message> (<username>)
-agar cut dapat berjalan dengan benar maka digunakanlah delimiter (-d) dan field (-f), dikarenakan adanya tanda ":" sebelum <log_type> maka delimiter di set ":" dan karenakan log_type merupakan field ke-4 maka digunakan -f 4
+   - fungsi cut bertujuan untuk memotong string yang awalnya berbentuk :
+     <time> <hostname> <app_name>: <log_type> <log_message> (<username>)
+     menjadi :
+     <log_type> <log_message> (<username>)
+     agar cut dapat berjalan dengan benar maka digunakanlah delimiter (-d) dan field (-f), dikarenakan adanya tanda ":" sebelum <log_type> maka delimiter di set ":" dan karenakan log_type merupakan field ke-4 maka digunakan -f 4
 
--Nomor 1b
+- Nomor 1b
 ```
 grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8 | sort | uniq -c | sort -nr 
 ```
-`grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
-`cut -d":" -f4` bertujuan untuk menghilangkan pola string di belakang <log_type>
-`cut -d"(" -f1` bertujuan untuk menghilangkan pola (<username>) pada string
-`cut -d" " -f3-8` bertujuan untuk menghilangkan kata ERROR dan hanya menyisakan <log_message>
+   - `grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
+   - `cut -d":" -f4` bertujuan untuk menghilangkan pola string di belakang <log_type>
+   - `cut -d"(" -f1` bertujuan untuk menghilangkan pola (<username>) pada string
+   - `cut -d" " -f3-8` bertujuan untuk menghilangkan kata ERROR dan hanya menyisakan <log_message>
 setelah hanya menyisakan <log_message>, hasil yang didapat di sort dan dihitung berdasarkan kesamaan <log_message> menggunakan `uniq -c` dan di sort secara descending berdasarkan jumlah kemunculannya dengan `sort -nr`
 
--Nomor 1c
+- Nomor 1c
 ```
 echo "ini ERROR"
 grep ERROR syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -c 
 echo "ini INFO"
 grep INFO syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -c
 ```
-`grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
-`rev` digunakan untuk mereverse string
-`cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
-setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
+   - `grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
+   - `rev` digunakan untuk mereverse string
+   - `cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
+   - setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
 
-`grep INFO` bertujuan untuk mendapatkan log_type hanya INFO dalam syslog.
-`rev` digunakan untuk mereverse string
-`cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
-setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
+   - `grep INFO` bertujuan untuk mendapatkan log_type hanya INFO dalam syslog.
+   - `rev` digunakan untuk mereverse string
+   - `cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
+   - setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
 
--Nomor 1d
+- Nomor 1d
 ```
 echo "Error,Count" > error_message.csv
 ```
-membuat header file untuk erro_message.csv
+  - membuat header file untuk erro_message.csv
 ```
 jenis=`grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8 | sort | uniq`
 reg=`grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8`
@@ -70,12 +70,13 @@ done<<<`printf "$jenis"`
 hasil=`echo "$hasil" | sort -rnk2t',' `
 printf "$hasil" >> error_message.csv
 ```
-Variabel jenis adalah variabel yang menyimpan jenis error non repitisi, dan variabel reg adalah variabel yang menyimpan jenis error dengan repitisi. Untuk menghilangkan repetisi jenis error maka digunakan  `uniq` pada variabel jenis, selanjutnya kemunculan setiap jenis error akan dihitung di dalam variable counter, lalu variabel hasil digunakan untuk menyimpan `jenis error, jumlah kemunculannya`. lalu hasil akan disort berdasarkan kolom 2 yaitu jumlah kemunculan jenis error dengan urutan dari besar ke kecil.
--Nomor 1e
+   - Variabel jenis adalah variabel yang menyimpan jenis error non repitisi, dan variabel reg adalah variabel yang menyimpan jenis error dengan repitisi. Untuk menghilangkan repetisi jenis error maka digunakan  `uniq` pada variabel jenis, selanjutnya kemunculan setiap jenis error akan dihitung di dalam variable counter, lalu variabel hasil digunakan untuk menyimpan `jenis error, jumlah kemunculannya`. lalu hasil akan disort berdasarkan kolom 2 yaitu jumlah kemunculan jenis error dengan urutan dari besar ke kecil.
+
+- Nomor 1e
 ```
 echo "Username,INFO,ERROR"
 ```
-membuat header file untuk user_statistic.csv
+  - membuat header file untuk user_statistic.csv
 ```
 nama=`cut -d":" -f 4 syslog.log | rev | cut -d"(" -f1 | rev | cut -d")" -f1| sort | uniq`
 reg=`cut -d":" -f 4 syslog.log | rev | cut -d"(" -f1| rev | cut -d ")" -f1|sort`
@@ -88,7 +89,7 @@ do
 done <<< `printf "$nama"`
 printf "$hasilstat" >> user_statistic.csv
 ```
-variabel nama adalah variabel yang menyimpan setiap username non repetisi. Variabel error digunakan untuk menghitung jumlah error untuk setiap usernya, variabel info digunakan untuk menghitung jumlah  info untuk setiap usernya, lalu stat akan menunjukkan jumlah info dan error untuk setiap usernya dan akan dimasukkan ke dalam hasilstat dan dikirim ke user_statistic.csv
+  - variabel nama adalah variabel yang menyimpan setiap username non repetisi. Variabel error digunakan untuk menghitung jumlah error untuk setiap usernya, variabel info digunakan untuk menghitung jumlah  info untuk setiap usernya, lalu stat akan menunjukkan jumlah info dan error untuk setiap usernya dan akan dimasukkan ke dalam hasilstat dan dikirim ke user_statistic.csv
 
 ## SOAL 2
 Tiap tahunnya, TokoShiSop mengadakan Rapat Kerja yang membahas bagaimana hasil penjualan dan strategi kedepannya yang akan diterapkan. Kamu sudah sangat menyiapkan sangat matang untuk raker tahun ini. Tetapi tiba-tiba, Steven, Manis, dan Clemong meminta kamu untuk mencari beberapa kesimpulan dari data penjualan “Laporan-TokoShiSop.tsv”.
