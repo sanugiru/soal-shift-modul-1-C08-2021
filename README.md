@@ -20,10 +20,10 @@ e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_sta
 ```
 cut -d":" -f 4 syslog.log
 ```
-  - fungsi cut bertujuan untuk memotong string yang awalnya berbentuk :
-     <time> <hostname> <app_name>: <log_type> <log_message> (<username>)
-     menjadi :
-     <log_type> <log_message> (<username>)
+            - fungsi cut bertujuan untuk memotong string yang awalnya berbentuk :  
+     <time> <hostname> <app_name>: <log_type> <log_message> (<username>)  
+     menjadi :  
+     <log_type> <log_message> (<username>)  
      agar cut dapat berjalan dengan benar maka digunakanlah delimiter (-d) dan field (-f), dikarenakan adanya tanda ":" sebelum <log_type> maka delimiter di set ":" dan karenakan log_type merupakan field ke-4 maka digunakan -f 4
 
 - Nomor 1b
