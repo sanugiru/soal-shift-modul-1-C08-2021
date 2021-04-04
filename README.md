@@ -1,8 +1,16 @@
 # Soal Shift Sisop Modul 1 C08 2021
-## Anggota:
+Anggota:
 - 05111940000112 Deka Julian Arrizki	    
 - 05111940000141 Muhammad Farhan Haykal	
-- 05111940000158 Shahnaaz Anisa Firdaus 	
+- 05111940000158 Shahnaaz Anisa Firdaus
+
+Daftar isi:  
+- [Soal 1](#soal-1)
+- [Soal 2](#soal-2)
+- [Soal 3](#soal-3)
+- [Kendala](#kendala)
+- [Screenshot Output](#screenshot-output)
+
 
 ## SOAL 1 
 a) Mengumpulkan informasi dari log aplikasi yang terdapat pada file syslog.log. Informasi yang diperlukan antara lain: jenis log (ERROR/INFO), pesan log, dan username pada setiap baris lognya
@@ -15,7 +23,7 @@ d) Semua informasi yang didapatkan pada poin b dituliskan ke dalam file error_me
 
 e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_statistic.csv dengan header Username,INFO,ERROR diurutkan berdasarkan username secara ascending.
 
-**_Pembahasan_**
+#### **Pembahasan**
 - **NOMOR 1A**
   ```
   cut -d":" -f 4 syslog.log
@@ -105,7 +113,7 @@ c) Segment customer dan jumlah transaksinya yang paling sedikit.
 
 d) Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sedikit dan total keuntungan wilayah tersebut.
 
-**_Pembahasan:_**
+#### **Pembahasan:**
 - **NOMOR 2A**
   ```
   awk -F '\t' '
@@ -199,7 +207,7 @@ d) Untuk mengamankan koleksi Foto dari Steven, Kuuhaku memintamu untuk membuat s
 e) Karena kuuhaku hanya bertemu Steven pada saat kuliah saja, yaitu setiap hari kecuali sabtu dan minggu, dari jam 7 pagi sampai 6 sore, ia memintamu untuk membuat koleksinya 
 ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya ter-unzip dan tidak ada file zip sama sekali.
 
-**_Pembahasan_**
+#### **Pembahasan**
 - **NOMOR 3A**
   ```
   # !/bin/bash
@@ -244,7 +252,8 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
     flag=$(($flag+1));
   done
   ```
-  - pertama perlu mendownload file dengan format kitten dan menyimpan lognya di Foto.log.
+  - pertama perlu mendownload file dengan format kitten dan menyimpan lognya di Foto.log.  
+  
   ```
   if [[ $i -eq 0 ]]; then
  	  wget -O "kitten" -a Foto.log https://loremflickr.com/320/240/kitten
@@ -253,7 +262,8 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   fi
 	
   ```
-  - Kemudian mengecek apakah file sama berdasarkan riwayat log tersebut dan menandai dengan flag = 1 apabila terdapat file yang sama
+  - Kemudian mengecek apakah file sama berdasarkan riwayat log tersebut dan menandai dengan flag = 1 apabila terdapat file yang sama  
+  
   ```
   flag=0
   check=($(awk '/https:\/\/loremflickr.com\/cache\/resized\// {print $3}' ./Foto.log))
@@ -267,7 +277,8 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
 	fi
   done
   ```
-  - hapus file ketika diketahui ada file yang sama
+  - hapus file ketika diketahui ada file yang sama  
+  
   ```
   if [ $flag -eq 1 ]
       then
@@ -281,6 +292,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   fi
   ```
   - Untuk merename file keformat soal pertama di deklarasikan nilai `flag=1` yang merupakan file pertama hasil rename. kemudian dilakukan looping untuk setiap nama filenya terdapat kata kitten. `mv "$X" "Koleksi_$flag"` dengan perintah ini maka setiap nama file yang ada kata kitten diganti dengan Koleksi_1 dst. Angka 1 menyesuaikan nilai flagnya.
+  
   ```
   flag=1
   for X in kitten*; do
@@ -408,14 +420,17 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
 ## SCREENSHOT OUTPUT
 #### HASIL NOMOR 1 
 - 1A  
+
   ![Screenshot from 2021-04-04 12-56-40](https://user-images.githubusercontent.com/70801807/113500121-be204500-9545-11eb-88df-e455facd6de9.png)
 
   ![Screenshot from 2021-04-04 12-57-37](https://user-images.githubusercontent.com/70801807/113500096-94671e00-9545-11eb-90ad-e3d1980c9c78.png)
 
 - 1B  
+
   ![1B](https://user-images.githubusercontent.com/70801807/113499817-3a655900-9543-11eb-9e64-864eeae6c292.PNG)
 
 - 1C  
+
   ![INFO](https://user-images.githubusercontent.com/70801807/113499785-e8bcce80-9542-11eb-82b4-53ededf7b9a2.PNG)
 
   ![ERROR](https://user-images.githubusercontent.com/70801807/113499794-012ce900-9543-11eb-98f5-049088570972.PNG)
