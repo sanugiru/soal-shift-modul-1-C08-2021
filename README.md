@@ -408,7 +408,9 @@ NOMOR 3
 1. di nomor 3C saya tidak tau cara looping melewati folder, sehingga harus mengakali membuat file lain untuk menjembatani. 
 2. saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
 
-**SCREENSHOT**
+## SCREENSHOT OUTPUT
+HASIL 2 
+![
 
 HASIL 3A
 ![Screenshot from 2021-04-02 22-42-55](https://user-images.githubusercontent.com/55046884/113430709-cd4ba980-9404-11eb-9ea6-0d83b752841a.png)
