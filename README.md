@@ -403,7 +403,24 @@ NOMOR 3
 2. saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
 
 ## SCREENSHOT OUTPUT
-#### HASIL 1
+#### HASIL 1A
+
+
+#### HASIL 1B
+![1B](https://user-images.githubusercontent.com/70801807/113499817-3a655900-9543-11eb-9e64-864eeae6c292.PNG)
+
+#### HASIL 1C
+![INFO](https://user-images.githubusercontent.com/70801807/113499785-e8bcce80-9542-11eb-82b4-53ededf7b9a2.PNG)
+
+![ERROR](https://user-images.githubusercontent.com/70801807/113499794-012ce900-9543-11eb-98f5-049088570972.PNG)
+
+#### HASIL 1D
+Output berupa file `error_message.csv` yang berisi hasil dari 1b yang di sort secara descending
+![1D](https://user-images.githubusercontent.com/70801807/113499887-d727f680-9543-11eb-9a89-40f79bea7f0e.PNG)
+
+#### HASIL 1E
+Output berupa file `user_statistic.csv` yang berisi hasil dari 1c dengan format USERNAME,INFO,ERROR
+![1E](https://user-images.githubusercontent.com/70801807/113499878-cc6d6180-9543-11eb-8609-ab319f9409a4.PNG)
 
 #### HASIL 2    
 Output berupa file `hasil.txt` yang berisi laporan hasil dari nomor 2a, 2b, 2c, dan 2d  
