@@ -403,6 +403,8 @@ NOMOR 3
 2. saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
 
 ## SCREENSHOT OUTPUT
+#### HASIL 1
+
 #### HASIL 2    
 Output berupa file `hasil.txt` yang berisi laporan hasil dari nomor 2a, 2b, 2c, dan 2d  
 ![hasil2](https://user-images.githubusercontent.com/72660860/113497550-71317400-952f-11eb-9370-8251b58be5c3.png)
