@@ -403,30 +403,25 @@ NOMOR 3
 2. saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
 
 ## SCREENSHOT OUTPUT
-HASIL 2 
-
+#### HASIL 2   
 Output berupa file `hasil.txt` yang berisi laporan hasil dari nomor 2a, 2b, 2c, dan 2d
 ![hasil2](https://user-images.githubusercontent.com/72660860/113497550-71317400-952f-11eb-9370-8251b58be5c3.png)
 
-HASIL 3A
+#### HASIL 3A
 ![Screenshot from 2021-04-02 22-42-55](https://user-images.githubusercontent.com/55046884/113430709-cd4ba980-9404-11eb-9ea6-0d83b752841a.png)
 
-HASIL 3B
-
+#### HASIL 3B  
 Digambar diketahui kalau semua koleksi gambar di pindah ke folder waktu folder tersebut dibuat yakni 02-04-2021
 ![Screenshot from 2021-04-02 22-45-13](https://user-images.githubusercontent.com/55046884/113430882-20256100-9405-11eb-83f1-be398a50c555.png)
 
-HASIL 3C
-
+#### HASIL 3C  
 Hasil berupa folder kucing atau kelinci yang didownload bergantian beda hari dan penamaan sesusai apa yang didownload dengan tanggal pendownloadan
 ![Screenshot from 2021-04-02 22-51-55](https://user-images.githubusercontent.com/55046884/113431510-0df7f280-9406-11eb-8af3-e00ff58726c5.png)
 
-HASIL 3D
-
+#### HASIL 3D  
 Semua folder hasil dari 3C dijadikan satu file zip dengan nama Koleksi.zip dan password sesuai tanggal pembuatan zip tersebut
 ![Screenshot from 2021-04-02 22-52-34](https://user-images.githubusercontent.com/55046884/113431576-2405b300-9406-11eb-8439-7b6e10db616b.png)
 
-HASIL 3E
-
+#### HASIL 3E  
 Hasil berupa unzip file dengan password yang sama dengan pembuatan zip tersebut
 ![Screenshot from 2021-04-02 22-56-35](https://user-images.githubusercontent.com/55046884/113431947-bad26f80-9406-11eb-82f8-23b9c7cbcc75.png)
