@@ -5,15 +5,15 @@ Anggota:
 - 05111940000158 Shahnaaz Anisa Firdaus 	
 
 ## SOAL 1 
-(a) Mengumpulkan informasi dari log aplikasi yang terdapat pada file syslog.log. Informasi yang diperlukan antara lain: jenis log (ERROR/INFO), pesan log, dan username pada setiap baris lognya
+a) Mengumpulkan informasi dari log aplikasi yang terdapat pada file syslog.log. Informasi yang diperlukan antara lain: jenis log (ERROR/INFO), pesan log, dan username pada setiap baris lognya
 
-(b) Kemudian, Ryujin harus menampilkan semua pesan error yang muncul beserta jumlah kemunculannya.
+b) Kemudian, Ryujin harus menampilkan semua pesan error yang muncul beserta jumlah kemunculannya.
 
-(c) Ryujin juga harus dapat menampilkan jumlah kemunculan log ERROR dan INFO untuk setiap user-nya.
+c) Ryujin juga harus dapat menampilkan jumlah kemunculan log ERROR dan INFO untuk setiap user-nya.
 
-(d) Semua informasi yang didapatkan pada poin b dituliskan ke dalam file error_message.csv dengan header Error,Count yang kemudian diikuti oleh daftar pesan error dan jumlah kemunculannya diurutkan berdasarkan jumlah kemunculan pesan error dari yang terbanyak.
+d) Semua informasi yang didapatkan pada poin b dituliskan ke dalam file error_message.csv dengan header Error,Count yang kemudian diikuti oleh daftar pesan error dan jumlah kemunculannya diurutkan berdasarkan jumlah kemunculan pesan error dari yang terbanyak.
 
-(e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_statistic.csv dengan header Username,INFO,ERROR diurutkan berdasarkan username secara ascending.
+e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_statistic.csv dengan header Username,INFO,ERROR diurutkan berdasarkan username secara ascending.
 
 **_Pembahasan_**
 -Nomor 1a
@@ -93,17 +93,17 @@ variabel nama adalah variabel yang menyimpan setiap username non repetisi. Varia
 ## SOAL 2
 Tiap tahunnya, TokoShiSop mengadakan Rapat Kerja yang membahas bagaimana hasil penjualan dan strategi kedepannya yang akan diterapkan. Kamu sudah sangat menyiapkan sangat matang untuk raker tahun ini. Tetapi tiba-tiba, Steven, Manis, dan Clemong meminta kamu untuk mencari beberapa kesimpulan dari data penjualan “Laporan-TokoShiSop.tsv”.
 
-a. Row ID dan profit percentage terbesar (jika hasil profit percentage terbesar lebih dari 1, maka ambil Row ID yang paling besar). 
+a) Row ID dan profit percentage terbesar (jika hasil profit percentage terbesar lebih dari 1, maka ambil Row ID yang paling besar). 
   ```
   Profit Percentage = (Profit ÷Cost Price) ×100
   ```
   Cost Price didapatkan dari pengurangan Sales dengan Profit (Quantity diabaikan).
 
-b. Daftar nama customer pada transaksi tahun 2017 di Albuquerque.
+b) Daftar nama customer pada transaksi tahun 2017 di Albuquerque.
 
-c. Segment customer dan jumlah transaksinya yang paling sedikit.
+c) Segment customer dan jumlah transaksinya yang paling sedikit.
 
-d. Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sedikit dan total keuntungan wilayah tersebut.
+d) Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sedikit dan total keuntungan wilayah tersebut.
 
 **_Pembahasan:_**
 - Nomor 2a
@@ -410,6 +410,7 @@ NOMOR 3
 
 ## SCREENSHOT OUTPUT
 HASIL 2 
+
 Output berupa file `hasil.txt` yang berisi laporan hasil dari nomor 2a, 2b, 2c, dan 2d
 ![hasil2](https://user-images.githubusercontent.com/72660860/113497550-71317400-952f-11eb-9370-8251b58be5c3.png)
 
