@@ -273,7 +273,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
       then
           len=$(($len - 1))
           if [[ $i -eq 0 ]]; then
-  			  rm "kitten"
+  		rm "kitten"
           fi
           rm "kitten.$i"
   else
@@ -398,55 +398,63 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
 
 ## KENDALA
 #### NOMOR 1
-1. Pada nomor 1D & 1E tidak selesai dan harus revisi dikarenakan tidak mengetahui cara untuk memasukkan hasil 1B & 1C ke masing-masing file
+- Pada nomor 1D & 1E tidak selesai dan harus revisi dikarenakan tidak mengetahui cara untuk memasukkan hasil 1B & 1C ke masing-masing file
 #### NOMOR 2
-1. Output pada nomor 2a, 2c, dan 2d menghasilkan output nol akibat row ke-1 dari file LaporanTokoShisop.tsv yang merupakan header masuk kedalam perhitungan, solusinya menambahkan conditional-if supaya row ke-1 diskip.
+- Output pada nomor 2a, 2c, dan 2d menghasilkan output nol akibat row ke-1 dari file LaporanTokoShisop.tsv yang merupakan header masuk kedalam perhitungan, solusinya menambahkan conditional-if supaya row ke-1 diskip.
 #### NOMOR 3
-1. di nomor 3C saya tidak tau cara looping melewati folder, sehingga harus mengakali membuat file lain untuk menjembatani. 
-2. saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
+- Di nomor 3C saya tidak tau cara looping melewati folder, sehingga harus mengakali membuat file lain untuk menjembatani. 
+- Saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
 
 ## SCREENSHOT OUTPUT
-#### HASIL 1A
-![Screenshot from 2021-04-04 12-56-40](https://user-images.githubusercontent.com/70801807/113500121-be204500-9545-11eb-88df-e455facd6de9.png)
+#### HASIL NOMOR 1 
+- 1A  
+  ![Screenshot from 2021-04-04 12-56-40](https://user-images.githubusercontent.com/70801807/113500121-be204500-9545-11eb-88df-e455facd6de9.png)
 
-![Screenshot from 2021-04-04 12-57-37](https://user-images.githubusercontent.com/70801807/113500096-94671e00-9545-11eb-90ad-e3d1980c9c78.png)
+  ![Screenshot from 2021-04-04 12-57-37](https://user-images.githubusercontent.com/70801807/113500096-94671e00-9545-11eb-90ad-e3d1980c9c78.png)
 
-#### HASIL 1B
-![1B](https://user-images.githubusercontent.com/70801807/113499817-3a655900-9543-11eb-9e64-864eeae6c292.PNG)
+- 1B  
+  ![1B](https://user-images.githubusercontent.com/70801807/113499817-3a655900-9543-11eb-9e64-864eeae6c292.PNG)
 
-#### HASIL 1C
-![INFO](https://user-images.githubusercontent.com/70801807/113499785-e8bcce80-9542-11eb-82b4-53ededf7b9a2.PNG)
+- 1C  
+  ![INFO](https://user-images.githubusercontent.com/70801807/113499785-e8bcce80-9542-11eb-82b4-53ededf7b9a2.PNG)
 
-![ERROR](https://user-images.githubusercontent.com/70801807/113499794-012ce900-9543-11eb-98f5-049088570972.PNG)
+  ![ERROR](https://user-images.githubusercontent.com/70801807/113499794-012ce900-9543-11eb-98f5-049088570972.PNG)
 
-#### HASIL 1D
-Output berupa file `error_message.csv` yang berisi hasil dari 1b yang di sort secara descending
-![1D](https://user-images.githubusercontent.com/70801807/113499887-d727f680-9543-11eb-9a89-40f79bea7f0e.PNG)
+- 1D  
+  Output berupa file `error_message.csv` yang berisi hasil dari 1b yang di sort secara descending 
+  
+  ![1D](https://user-images.githubusercontent.com/70801807/113499887-d727f680-9543-11eb-9a89-40f79bea7f0e.PNG)
 
-#### HASIL 1E
-Output berupa file `user_statistic.csv` yang berisi hasil dari 1c dengan format USERNAME,INFO,ERROR
+- 1E  
+  Output berupa file `user_statistic.csv` yang berisi hasil dari 1c dengan format USERNAME,INFO,ERROR  
 
-![1E](https://user-images.githubusercontent.com/70801807/113499878-cc6d6180-9543-11eb-8609-ab319f9409a4.PNG)
+  ![1E](https://user-images.githubusercontent.com/70801807/113499878-cc6d6180-9543-11eb-8609-ab319f9409a4.PNG)
 
-#### HASIL 2    
+#### HASIL NOMOR 2    
 Output berupa file `hasil.txt` yang berisi laporan hasil dari nomor 2a, 2b, 2c, dan 2d  
+
 ![hasil2](https://user-images.githubusercontent.com/72660860/113497550-71317400-952f-11eb-9370-8251b58be5c3.png)
 
-#### HASIL 3A  
-![Screenshot from 2021-04-02 22-42-55](https://user-images.githubusercontent.com/55046884/113430709-cd4ba980-9404-11eb-9ea6-0d83b752841a.png)
+#### HASIL NOMOR 3
+- 3A  
+  ![Screenshot from 2021-04-02 22-42-55](https://user-images.githubusercontent.com/55046884/113430709-cd4ba980-9404-11eb-9ea6-0d83b752841a.png)
 
-#### HASIL 3B  
-Digambar diketahui kalau semua koleksi gambar di pindah ke folder waktu folder tersebut dibuat yakni 02-04-2021  
-![Screenshot from 2021-04-02 22-45-13](https://user-images.githubusercontent.com/55046884/113430882-20256100-9405-11eb-83f1-be398a50c555.png)
+- 3B  
+  Digambar diketahui kalau semua koleksi gambar di pindah ke folder waktu folder tersebut dibuat yakni 02-04-2021  
+  
+  ![Screenshot from 2021-04-02 22-45-13](https://user-images.githubusercontent.com/55046884/113430882-20256100-9405-11eb-83f1-be398a50c555.png)
 
-#### HASIL 3C  
-Hasil berupa folder kucing atau kelinci yang didownload bergantian beda hari dan penamaan sesusai apa yang didownload dengan tanggal pendownloadan  
-![Screenshot from 2021-04-02 22-51-55](https://user-images.githubusercontent.com/55046884/113431510-0df7f280-9406-11eb-8af3-e00ff58726c5.png)
+- 3C  
+  Hasil berupa folder kucing atau kelinci yang didownload bergantian beda hari dan penamaan sesusai apa yang didownload dengan tanggal pendownloadan  
+  
+  ![Screenshot from 2021-04-02 22-51-55](https://user-images.githubusercontent.com/55046884/113431510-0df7f280-9406-11eb-8af3-e00ff58726c5.png)
 
-#### HASIL 3D  
-Semua folder hasil dari 3C dijadikan satu file zip dengan nama Koleksi.zip dan password sesuai tanggal pembuatan zip tersebut  
-![Screenshot from 2021-04-02 22-52-34](https://user-images.githubusercontent.com/55046884/113431576-2405b300-9406-11eb-8439-7b6e10db616b.png)
+- 3D  
+  Semua folder hasil dari 3C dijadikan satu file zip dengan nama Koleksi.zip dan password sesuai tanggal pembuatan zip tersebut  
+  
+  ![Screenshot from 2021-04-02 22-52-34](https://user-images.githubusercontent.com/55046884/113431576-2405b300-9406-11eb-8439-7b6e10db616b.png)
 
-#### HASIL 3E  
-Hasil berupa unzip file dengan password yang sama dengan pembuatan zip tersebut  
-![Screenshot from 2021-04-02 22-56-35](https://user-images.githubusercontent.com/55046884/113431947-bad26f80-9406-11eb-82f8-23b9c7cbcc75.png)
+- 3E  
+  Hasil berupa unzip file dengan password yang sama dengan pembuatan zip tersebut  
+  
+  ![Screenshot from 2021-04-02 22-56-35](https://user-images.githubusercontent.com/55046884/113431947-bad26f80-9406-11eb-82f8-23b9c7cbcc75.png)
