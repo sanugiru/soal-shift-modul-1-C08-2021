@@ -208,7 +208,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   len=22
   i=0
   while [ "$i" -le "$len" ]
-  do
+  do  
   	if [[ $i -eq 0 ]]; then
 		wget -O "kitten" -a Foto.log https://loremflickr.com/320/240/kitten
 	else
@@ -335,21 +335,21 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   exec &> Foto.log
   if [[ $flag_kucing -le $flag_kelinci ]];
   then
-	#PROSES 3.2.1
-	flag=1
-	for i in {1..23}
-	do
+	  #PROSES 3.2.1
+	  flag=1
+	  for i in {1..23}
+	  do
 		wget "https://loremflickr.com/320/240/kitten"
-	done
+	  done
 
-	for X in kitten* 
-	do
+	  for X in kitten* 
+	  do
 		mv "$X" "Koleksi_$flag";
-  		flag=$(($flag+1));
-  	done
-  	mkdir ~/Documents/SISOP/modul1/soal3/solve/Kucing_$(date +%d-%m-%Y)
-	mv ~/Documents/SISOP/modul1/soal3/output/* ~/Documents/SISOP/modul1/soal3/solve/Kucing_$(date +%d-%m-%Y)
-	touch ~/Documents/SISOP/modul1/soal3/output/x_"$flag_kucing"{1..2}.txt
+  		flag=$(($flag+1));  
+	  done
+	  mkdir ~/Documents/SISOP/modul1/soal3/solve/Kucing_$(date +%d-%m-%Y)
+	  mv ~/Documents/SISOP/modul1/soal3/output/* ~/Documents/SISOP/modul1/soal3/solve/Kucing_$(date +%d-%m-%Y)
+	  touch ~/Documents/SISOP/modul1/soal3/output/x_"$flag_kucing"{1..2}.txt
 
   else
 	#PROSES 3.2.2
