@@ -352,21 +352,21 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
 	  touch ~/Documents/SISOP/modul1/soal3/output/x_"$flag_kucing"{1..2}.txt
 
   else
-	#PROSES 3.2.2
-	flag=1
-	for i in {1..23}
-	do
-		wget "https://loremflickr.com/320/240/bunny"
-	done
+	  #PROSES 3.2.2
+	  flag=1
+	  for i in {1..23}
+	  do
+		  wget "https://loremflickr.com/320/240/bunny"
+	  done
 	
-	for X in bunny* 
-	do
+	  for X in bunny* 
+	  do
   		mv "$X" "Koleksi_$flag";
   		flag=$(($flag+1));
-  	done
-  	mkdir ~/Documents/SISOP/modul1/soal3/solve/Kelinci_$(date +%d-%m-%Y)
-	mv ~/Documents/SISOP/modul1/soal3/output/* ~/Documents/SISOP/modul1/soal3/solve/Kelinci_$(date +%d-%m-%Y)
-	touch ~/Documents/SISOP/modul1/soal3/output/y_"$flag_kelinci"{1..2}.txt
+	  done
+	  mkdir ~/Documents/SISOP/modul1/soal3/solve/Kelinci_$(date +%d-%m-%Y)
+	  mv ~/Documents/SISOP/modul1/soal3/output/* ~/Documents/SISOP/modul1/soal3/solve/Kelinci_$(date +%d-%m-%Y)
+	  touch ~/Documents/SISOP/modul1/soal3/output/y_"$flag_kelinci"{1..2}.txt
   fi
   ```  
   - Pada proses 3.1.1 digunakan untuk menghitung jumlah file yang terdapat kata x `flag_kucing=$(($flag_kucing+1))` dimana file x dibuat ketika terdapat di direktori `/Documents/SISOP/modul1/soal3/output/` setelah pemindahan semua file output ke direktori `/Documents/SISOP/modul1/soal3/solve/Kucing_$(date +%d-%m-%Y)`.
