@@ -35,7 +35,7 @@ e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_sta
      agar cut dapat berjalan dengan benar maka digunakanlah delimiter (-d) dan field (-f), dikarenakan adanya tanda ":" sebelum <log_type> maka delimiter di set ":" dan karenakan log_type merupakan field ke-4 maka digunakan -f 4
 
 - **NOMOR 1B**
-  ```
+  ```shell
   grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8 | sort | uniq -c | sort -nr 
   ```
   - `grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
@@ -45,7 +45,7 @@ e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_sta
 setelah hanya menyisakan <log_message>, hasil yang didapat di sort dan dihitung berdasarkan kesamaan <log_message> menggunakan `uniq -c` dan di sort secara descending berdasarkan jumlah kemunculannya dengan `sort -nr`
 
 - **NOMOR 1C**
-  ```
+  ```shell
   echo "ini ERROR"
   grep ERROR syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -c 
   echo "ini INFO"
@@ -61,11 +61,11 @@ setelah hanya menyisakan <log_message>, hasil yang didapat di sort dan dihitung 
   - setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
 
 - **NOMOR 1D**
-  ```
+  ```shell
   echo "Error,Count" > error_message.csv
   ```
   - membuat header file untuk erro_message.csv  
-  ```
+  ```shell
   jenis=`grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8 | sort | uniq`
   reg=`grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8`
 
@@ -80,11 +80,11 @@ setelah hanya menyisakan <log_message>, hasil yang didapat di sort dan dihitung 
   - Variabel jenis adalah variabel yang menyimpan jenis error non repitisi, dan variabel reg adalah variabel yang menyimpan jenis error dengan repitisi. Untuk menghilangkan repetisi jenis error maka digunakan  `uniq` pada variabel jenis, selanjutnya kemunculan setiap jenis error akan dihitung di dalam variable counter, lalu variabel hasil digunakan untuk menyimpan `jenis error, jumlah kemunculannya`. lalu hasil akan disort berdasarkan kolom 2 yaitu jumlah kemunculan jenis error dengan urutan dari besar ke kecil.
 
 - **NOMOR 1E**
-  ```
+  ```shell
   echo "Username,INFO,ERROR"
   ```
   - membuat header file untuk user_statistic.csv
-  ```
+  ```shell
   nama=`cut -d":" -f 4 syslog.log | rev | cut -d"(" -f1 | rev | cut -d")" -f1| sort | uniq`
   reg=`cut -d":" -f 4 syslog.log | rev | cut -d"(" -f1| rev | cut -d ")" -f1|sort`
   while read y
@@ -115,7 +115,7 @@ d) Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sediki
 
 #### **Pembahasan:**
 - **NOMOR 2A**
-  ```
+  ```shell
   awk -F '\t' '
   {	
 	    if (NR>1) profitPercentage[$1] = $21 / ($18 - $21) * 100
@@ -134,7 +134,7 @@ d) Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sediki
    - `... > hasil.txt` untuk menyimpan hasil output ke dalam file hasil.txt
 
 - **NOMOR 2B**
-  ```
+  ```shell
   echo "Daftar nama customer di Albuquerque pada tahun 2017 antara lain:" >> hasil.txt
 
   awk -F '\t' '{
@@ -149,7 +149,7 @@ d) Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sediki
   - `... >> hasil.txt` menambahkan hasil output ke dalam file hasil.txt yang telah dibuat saat nomor 2a sebelumnya.
 
 - **NOMOR 2C**
-  ```
+  ```shell
   awk -F "\t" '
   {	
 	min = segCust[$8]
@@ -171,7 +171,7 @@ d) Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sediki
   -   - Hasil output ditambahkan ke dalam file hasil.txt yang telah dibuat pada nomor sebelumnya.
 
 - **NOMOR 2D**
-  ```
+  ```shell
   awk -F '\t' '
   {	
 	min = profit[$13]	
@@ -209,7 +209,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
 
 #### **Pembahasan**
 - **NOMOR 3A**
-  ```
+  ```shell
   # !/bin/bash
 
   #dijalankan di dir hasil3a
@@ -254,7 +254,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   ```
   - pertama perlu mendownload file dengan format kitten dan menyimpan lognya di Foto.log.  
   
-  ```
+  ```shell
   if [[ $i -eq 0 ]]; then
  	  wget -O "kitten" -a Foto.log https://loremflickr.com/320/240/kitten
   else
@@ -264,7 +264,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   ```
   - Kemudian mengecek apakah file sama berdasarkan riwayat log tersebut dan menandai dengan flag = 1 apabila terdapat file yang sama  
   
-  ```
+  ```shell
   flag=0
   check=($(awk '/https:\/\/loremflickr.com\/cache\/resized\// {print $3}' ./Foto.log))
   length=(${#check[@]})
@@ -279,7 +279,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   ```
   - hapus file ketika diketahui ada file yang sama  
   
-  ```
+  ```shell
   if [ $flag -eq 1 ]
       then
           len=$(($len - 1))
@@ -293,7 +293,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   ```
   - Untuk merename file keformat soal pertama di deklarasikan nilai `flag=1` yang merupakan file pertama hasil rename. kemudian dilakukan looping untuk setiap nama filenya terdapat kata kitten. `mv "$X" "Koleksi_$flag"` dengan perintah ini maka setiap nama file yang ada kata kitten diganti dengan Koleksi_1 dst. Angka 1 menyesuaikan nilai flagnya.
   
-  ```
+  ```shell
   flag=1
   for X in kitten*; do
     mv "$X" "Koleksi_$flag";
@@ -303,14 +303,14 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
 
 - **NOMOR 3B**  
   **_SHELL SCRIPT_**
-  ```
+  ```shell
   #!/bin/bash
 
   mkdir ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)
   mv  ~/Documents/SISOP/modul1/soal3/hasil3a/* ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)
   ```
   **_CRONTAB_**
-  ```
+  ```shell
   0 20 1-30/7,2-30/4 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh
   ```
   - `mkdir ~/Documents/SISOP/modul1/soal3/$(date +%d-%m-%Y)` membuat folder dengan nama sesuai tanggal di hari tersebut. Untuk direktori menyesuaikan
@@ -319,7 +319,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   - `0 20 */4 * * /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3a.sh` menjalankan shell script soal3a.sh setiap jam 20:00 pada empat hari sekali setiap bulan
 
 - **NOMOR 3C**
-  ```
+  ```shell
   #!/bin/bash
 
   cd /home/deka/Documents/SISOP/modul1/soal3/output
@@ -387,7 +387,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   - Pada proses 3.2 melakukan proses download file, rename file dan memindahkan semua hasil download di direktori output ke folder sesuai ketentuan soal. Untuk 3.2.1 bertugas pada file kitten dan 3.2.2 untuk file bunny
 
 - **NOMOR 3D**
-  ```
+  ```shell
   #!/bin/bash
 
   cd /home/deka/Documents/SISOP/modul1/soal3/solve
@@ -401,7 +401,7 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   - `find . -type d -name 'Kelinci*' -exec rm -r {} +` begitu juga dengan folder yang ada namanya Kelinci
 
 - **NOMOR 3E**
-  ```
+  ```shell
   0 7 * * 1-5 /bin/bash /home/deka/Documents/SISOP/modul1/soal3/soal3d.sh
   0 18 * * * unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip
   ```  
