@@ -25,7 +25,7 @@ e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_sta
 
 #### **Pembahasan**
 - **NOMOR 1A**
-  ```
+  ```shell
   cut -d":" -f 4 syslog.log
   ```
    - fungsi cut bertujuan untuk memotong string yang awalnya berbentuk :  
