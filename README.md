@@ -260,7 +260,6 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   else
 	  wget -O "kitten.$i" -a Foto.log https://loremflickr.com/320/240/kitten
   fi
-	
   ```
   - Kemudian mengecek apakah file sama berdasarkan riwayat log tersebut dan menandai dengan flag = 1 apabila terdapat file yang sama  
   
@@ -412,7 +411,8 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
 #### NOMOR 1
 - Pada nomor 1D & 1E tidak selesai dan harus revisi dikarenakan tidak mengetahui cara untuk memasukkan hasil 1B & 1C ke masing-masing file
 #### NOMOR 2
-- Output pada nomor 2a, 2c, dan 2d menghasilkan output nol akibat row ke-1 dari file LaporanTokoShisop.tsv yang merupakan header masuk kedalam perhitungan, solusinya menambahkan conditional-if supaya row ke-1 diskip.
+- Error pada nomor 2a dikarenakan row ke-1 row ke-1 dari file LaporanTokoShisop.tsv yang merupakan header termasuk ke dalam perhitungan dan menyebabkan pembagian oleh angka nol, solusinya menambahkan conditional-if agar row ke-1 di skip.
+- Output pada nomor 2c dan 2d menghasilkan output nilai nol akibat mencari nilai minimal dan row ke-1 dari file LaporanTokoShisop.tsv yang merupakan header masuk kedalam perhitungan sehingga yang tersimpan ke dalam variabel min adalah nol, solusinya menambahkan conditional-if agar row ke-1 diskip.
 #### NOMOR 3
 - Di nomor 3C saya tidak tau cara looping melewati folder, sehingga harus mengakali membuat file lain untuk menjembatani. 
 - Saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
