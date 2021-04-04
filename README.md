@@ -404,7 +404,9 @@ NOMOR 3
 
 ## SCREENSHOT OUTPUT
 #### HASIL 1A
+![Screenshot from 2021-04-04 12-56-40](https://user-images.githubusercontent.com/70801807/113500121-be204500-9545-11eb-88df-e455facd6de9.png)
 
+![Screenshot from 2021-04-04 12-57-37](https://user-images.githubusercontent.com/70801807/113500096-94671e00-9545-11eb-90ad-e3d1980c9c78.png)
 
 #### HASIL 1B
 ![1B](https://user-images.githubusercontent.com/70801807/113499817-3a655900-9543-11eb-9e64-864eeae6c292.PNG)
