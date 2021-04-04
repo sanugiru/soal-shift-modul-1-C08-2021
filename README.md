@@ -397,7 +397,8 @@ ter-zip saat kuliah saja, selain dari waktu yang disebutkan, ia ingin koleksinya
   - `0 18 * * * unzip -P "$(date -d "yesterday" '+%m%d%Y')" /home/deka/Documents/SISOP/modul1/soal3/solve/Koleksi.zip` melakukan unzip file yang terdapat di direktori solve dengan ketentuan password `$(date -d '+%m%d%Y')`. unzip dilakukan mulai pukul 18.00 karena pada jam tersebut perkuliahan berakhir
 
 ## KENDALA
-
+NOMOR 1
+1. Pada nomor 1D & 1E tidak selesai dan harus revisi dikarenakan tidak mengetahui cara untuk memasukkan hasil 1B & 1C ke masing-masing file
 NOMOR 3
 1. di nomor 3C saya tidak tau cara looping melewati folder, sehingga harus mengakali membuat file lain untuk menjembatani. 
 2. saya masih fail kalau menjalankan shell script dengan crontab dan menyimpan hasilnya ke folder tertentu sehingga saya mengakali untuk mengubah direktori di shell script
