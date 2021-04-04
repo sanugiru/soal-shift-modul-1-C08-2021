@@ -104,14 +104,27 @@ Tiap tahunnya, TokoShiSop mengadakan Rapat Kerja yang membahas bagaimana hasil p
 a) Row ID dan profit percentage terbesar (jika hasil profit percentage terbesar lebih dari 1, maka ambil Row ID yang paling besar). 
   ```
   Profit Percentage = (Profit ÷Cost Price) ×100
-  ```
   Cost Price didapatkan dari pengurangan Sales dengan Profit (Quantity diabaikan).
-
+  ```
+  
 b) Daftar nama customer pada transaksi tahun 2017 di Albuquerque.
 
 c) Segment customer dan jumlah transaksinya yang paling sedikit.
 
 d) Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sedikit dan total keuntungan wilayah tersebut.
+
+e) Membuat sebuah script yang akan menghasilkan file “hasil.txt” yang memiliki format sebagai berikut:
+   ```
+   Transaksi terakhir dengan profit percentage terbesar yaitu *ID Transaksi* dengan persentase *Profit Percentage*%.
+
+   Daftar nama customer di Albuquerque pada tahun 2017 antara lain:
+   *Nama Customer1*
+   *Nama Customer2* dst
+
+   Tipe segmen customer yang penjualannya paling sedikit adalah *Tipe Segment* dengan *Total Transaksi* transaksi.
+
+   Wilayah bagian (region) yang memiliki total keuntungan (profit) yang paling sedikit adalah *Nama Region* dengan total keuntungan *Total Keuntungan (Profit)*
+   ```
 
 #### **Pembahasan:**
 - **NOMOR 2A**
@@ -191,6 +204,9 @@ d) Wilayah bagian (region) yang memiliki total keuntungan (profit) paling sediki
   - Kemudian array di-loop untuk mencari region yang memiliki nilai profit terdikit, apabila nilai array lebih kecil dari variabel 'min' maka nilai dari array key region tersebut akan disimpan ke dalam variabel 'min' dan array key-nya akan disimpan ke dalam variabel 'region'
   - `reg!="Region"` kondisi tambahan agar line pertama yang merupakan header, tidak terhitung dalam perbandingan.
   - Hasil output ditambahkan ke dalam file hasil.txt yang telah dibuat pada nomor sebelumnya.
+
+- **NOMOR 2E**
+  - Script merupakan gabungan jawaban nomor 2a, 2b, 2c, dan 2d yang dimasukkan ke dalam satu file bernama [soal2_generate_laporan_ihir_shisop.](https://github.com/sanugiru/soal-shift-sisop-modul-1-C08-2021/blob/main/soal2/soal2_generate_laporan_ihir_shisop.sh)
 
 ## SOAL 3
 
