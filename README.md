@@ -422,6 +422,7 @@ Output berupa file `error_message.csv` yang berisi hasil dari 1b yang di sort se
 
 #### HASIL 1E
 Output berupa file `user_statistic.csv` yang berisi hasil dari 1c dengan format USERNAME,INFO,ERROR
+
 ![1E](https://user-images.githubusercontent.com/70801807/113499878-cc6d6180-9543-11eb-8609-ab319f9409a4.PNG)
 
 #### HASIL 2    
