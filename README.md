@@ -206,7 +206,7 @@ e) Membuat sebuah script yang akan menghasilkan file “hasil.txt” yang memili
   - Hasil output ditambahkan ke dalam file hasil.txt yang telah dibuat pada nomor sebelumnya.
 
 - **NOMOR 2E**
-  - Script merupakan gabungan jawaban nomor 2a, 2b, 2c, dan 2d yang dimasukkan ke dalam satu file bernama [soal2_generate_laporan_ihir_shisop.](https://github.com/sanugiru/soal-shift-sisop-modul-1-C08-2021/blob/main/soal2/soal2_generate_laporan_ihir_shisop.sh)
+  - Script merupakan gabungan jawaban nomor 2a, 2b, 2c, dan 2d yang dimasukkan ke dalam satu file `.sh` bernama [soal2_generate_laporan_ihir_shisop.](https://github.com/sanugiru/soal-shift-sisop-modul-1-C08-2021/blob/main/soal2/soal2_generate_laporan_ihir_shisop.sh)
 
 ## SOAL 3
 
