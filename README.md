@@ -20,7 +20,7 @@ e) Semua informasi yang didapatkan pada poin c dituliskan ke dalam file user_sta
 ```
 cut -d":" -f 4 syslog.log
 ```
-   - fungsi cut bertujuan untuk memotong string yang awalnya berbentuk :
+  - fungsi cut bertujuan untuk memotong string yang awalnya berbentuk :
      <time> <hostname> <app_name>: <log_type> <log_message> (<username>)
      menjadi :
      <log_type> <log_message> (<username>)
@@ -30,10 +30,10 @@ cut -d":" -f 4 syslog.log
 ```
 grep ERROR syslog.log | cut -d ":" -f4 | cut -d"(" -f1 | cut -d" " -f3-8 | sort | uniq -c | sort -nr 
 ```
-   - `grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
-   - `cut -d":" -f4` bertujuan untuk menghilangkan pola string di belakang <log_type>
-   - `cut -d"(" -f1` bertujuan untuk menghilangkan pola (<username>) pada string
-   - `cut -d" " -f3-8` bertujuan untuk menghilangkan kata ERROR dan hanya menyisakan <log_message>
+  - `grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
+  - `cut -d":" -f4` bertujuan untuk menghilangkan pola string di belakang <log_type>
+  - `cut -d"(" -f1` bertujuan untuk menghilangkan pola (<username>) pada string
+  - `cut -d" " -f3-8` bertujuan untuk menghilangkan kata ERROR dan hanya menyisakan <log_message>
 setelah hanya menyisakan <log_message>, hasil yang didapat di sort dan dihitung berdasarkan kesamaan <log_message> menggunakan `uniq -c` dan di sort secara descending berdasarkan jumlah kemunculannya dengan `sort -nr`
 
 - Nomor 1c
@@ -43,15 +43,15 @@ grep ERROR syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq 
 echo "ini INFO"
 grep INFO syslog.log | rev | cut -d"(" -f1 | rev|  cut -d")" -f1 | sort | uniq -c
 ```
-   - `grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
-   - `rev` digunakan untuk mereverse string
-   - `cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
-   - setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
+  - `grep ERROR` bertujuan untuk mendapatkan log_type hanya ERROR dalam syslog.
+  - `rev` digunakan untuk mereverse string
+  - `cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
+  - setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
 
-   - `grep INFO` bertujuan untuk mendapatkan log_type hanya INFO dalam syslog.
-   - `rev` digunakan untuk mereverse string
-   - `cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
-   - setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
+  - `grep INFO` bertujuan untuk mendapatkan log_type hanya INFO dalam syslog.
+  - `rev` digunakan untuk mereverse string
+  - `cut -d"(" -f1 ` & `cut -d")" -f1` digunakan untuk mendapatkan <username>
+  - setelah hanya menyisakan <username> makan username akan di sort dan dihitung berdasarkan kesamaanya menggunakan `uniq-c`
 
 - Nomor 1d
 ```
@@ -70,7 +70,7 @@ done<<<`printf "$jenis"`
 hasil=`echo "$hasil" | sort -rnk2t',' `
 printf "$hasil" >> error_message.csv
 ```
-   - Variabel jenis adalah variabel yang menyimpan jenis error non repitisi, dan variabel reg adalah variabel yang menyimpan jenis error dengan repitisi. Untuk menghilangkan repetisi jenis error maka digunakan  `uniq` pada variabel jenis, selanjutnya kemunculan setiap jenis error akan dihitung di dalam variable counter, lalu variabel hasil digunakan untuk menyimpan `jenis error, jumlah kemunculannya`. lalu hasil akan disort berdasarkan kolom 2 yaitu jumlah kemunculan jenis error dengan urutan dari besar ke kecil.
+  - Variabel jenis adalah variabel yang menyimpan jenis error non repitisi, dan variabel reg adalah variabel yang menyimpan jenis error dengan repitisi. Untuk menghilangkan repetisi jenis error maka digunakan  `uniq` pada variabel jenis, selanjutnya kemunculan setiap jenis error akan dihitung di dalam variable counter, lalu variabel hasil digunakan untuk menyimpan `jenis error, jumlah kemunculannya`. lalu hasil akan disort berdasarkan kolom 2 yaitu jumlah kemunculan jenis error dengan urutan dari besar ke kecil.
 
 - Nomor 1e
 ```
